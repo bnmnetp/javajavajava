@@ -149,6 +149,7 @@ JAVA\,\,LANGUAGE\,\,RULE}
 </latex-image-preamble>
 <!-- <rename @element="activity" xml:lang="fr-FR">Laboratoire</rename> -->
 <!-- <rename @element="observation" xml:lang="en-EN">Programming Tip</rename> -->
+<document-id edition="1">javajavajava</document-id>
   </docinfo>
   <book>
     <title>Java, Java, Java</title>
