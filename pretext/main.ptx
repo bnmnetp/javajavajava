@@ -152,8 +152,8 @@ JAVA\,\,LANGUAGE\,\,RULE}
 <!-- Rename Checkpoint for <exercise> to Exercise -->
 <rename element="inlineexercise">Exercise</rename>
 
-
 <brandlogo url="." source="jjj-3e-cover.jpg" />  
+<document-id edition="1">javajavajava</document-id>
 
 </docinfo>
 
