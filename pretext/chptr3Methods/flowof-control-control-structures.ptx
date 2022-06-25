@@ -43,8 +43,8 @@
       </p>
       <p>
         <program language="java"><input>
-        if (<em>boolean expression</em>) 
-            <em>contained statement</em>;
+        if (boolean expression) 
+            contained statement;
       </input></program>
       </p>
     </principle>
@@ -96,9 +96,9 @@ if (true) "Hello";    // "Hello" is  not a statement
       
     </p>
 
-    <exercise label="ifRainEx">
+    <exercise label="ifRainEx" title="Ex">
       <statement><p>Try the following code. Try changing the boolean isRaining to <c>false</c> and run again. 
-        What does it print out? Trace through the code with CodeLens.</p></statement>
+        What does it print out? Trace through the code with Show CodeLens.</p></statement>
       <program interactive="activecode"><input>
       public class RainMonitor
          public static void main(String[] args)
@@ -290,10 +290,10 @@ else
       </p>
       <p>
         <program language="java"><input>
-        if (<em>boolean expression</em>) 
-           <em>statement1</em>;       
+        if (boolean expression) 
+           statement1;       
         else
-           <em>statement2</em>; 
+           statement2; 
            </input></program>
       </p>
     </principle>
@@ -453,7 +453,7 @@ public String getStatus(boolean isDone)
         </li>
         </ol>
         </p>
-        
+      
         <exercise label="ifDebugEx">
           <statement><p> Identify the errors in the following statements and fix them in the activecode below.
           </p></statement>
@@ -476,9 +476,10 @@ public String getStatus(boolean isDone)
                }
               }
  </input></program>
-          </p>
+  </exercise>        
+  
         
-          <exercise label="ifDebugEx">
+          <exercise label="getPlayerNameEx">
             <statement><p>Write a method named
   <c>getPlayerName()</c> that returns a <c>String</c>. It should return
               <q>Ann</q>,              <q>Bill</q>,
@@ -493,9 +494,9 @@ public String getStatus(boolean isDone)
  
                  public void setPlayer(int num) { player = num; }
 
-                 /** Write a method named <c>getPlayerName()</c> that returns a <c>String</c>. 
-                 It should return<q>Ann</q>, <q>Boyd</q>, <q>Cal</q>, or <q>Error</q>
-                 when the value of <c>player</c> is respectively 1, 2, 3, or any other value.
+                 /** Write a method named getPlayerName() that returns a String. 
+                 It should returnAnn, Boyd, Cal, or Error
+                 when the value of player is respectively 1, 2, 3, or any other value.
                  */
                  public String getPlayerName()
                  {
@@ -517,7 +518,7 @@ public String getStatus(boolean isDone)
                  }
                 }
    </input></program>
-        
+        </exercise>
   
   </subsection>
 
@@ -565,7 +566,6 @@ public String getStatus(boolean isDone)
         Click on the CodeLens button to trace through it. Change the main method to change num and run again.
       </p></statement>
       <program interactive="activecode"><input>
- <program language="java"><input>
   public class Sum
   {
     public int sumSquares(int max)
@@ -586,6 +586,7 @@ public String getStatus(boolean isDone)
     }
   }
  </input></program>
+ </exercise>
     <p>
       Note that in this example,
       the variable <c>num</c> gets assigned an initial value of <m>1</m> before the <c>while</c> statement.
@@ -605,12 +606,15 @@ public String getStatus(boolean isDone)
         The <term>while statement</term> has the following syntax:
       </p>
       <p>
-        <m>while ( <em>loop entry condition </em> ) 
+        <program language="java"><input>
+          while ( loop entry condition ) 
            {
-              <em>loop body </em> 
-            }</m>
+              loop body; 
+           }
+          </input></program>
       </p>
     </principle>
+ 
     <p>
       When the <c>while</c> statement is executed,
       the loop entry condition is evaluated and if this evaluates to <c>false</c>, execution continues at the statement immediately after the loop body.
@@ -626,7 +630,7 @@ public String getStatus(boolean isDone)
       We can restate the above guidelines as a design principle:
     </p>
     <principle>
-      <title>EFFECTIVE DESIGN:Loop Structure</title>
+      <title>EFFECTIVE DESIGN: Loop Structure</title>
       <p>
         A properly designed while structure must include an initializer,
         a loop entry condition, and an updater.
@@ -672,13 +676,51 @@ while (loop entry condition) { // Bound test
       and the loop body contains updater statements.
       The semantics of the while structure are shown in <xref ref="fig-whileflow">Figure</xref>.
     </p>
-    <p>
-    <subsection><title>While Loop Self-Study Exercises</title></subsection>
+  </subsection>
+  
+    <subsection><title>While Loop Self-Study Exercises</title>
      
           <p> Modify the definition of the
-<c>sumSquares()</c> method to define a method named <c>sumCubes()</c> that sums the cubes of integers from a minimum value up to a maximum value and returns that sum.  <c>sumCubes()</c> should have two parameters that will store the minimum and maximum values.
-            Thus the method call <c>sumCubes(2,3)</c> should return <m>35</m> since <m>2*2*2 + 3*3*3 = 8 + 27 = 35</m>.
+<c>sumSquares()</c> method to define a method named <c>sumCubes()</c> that sums the cubes of integers 
+from a minimum value up to a maximum value and returns that sum. 
+ <c>sumCubes()</c> should have two parameters that will store the minimum and maximum values.
+Thus the method call <c>sumCubes(2,3)</c> should return <m>35</m> since <m>2*2*2 + 3*3*3 = 8 + 27 = 35</m>.
           
     </p>
+
+    <exercise label="sumCubes">
+      <statement><p>Using the <c>sumSquares</c> method below as a guide, define a method named <c>sumCubes(min, max)</c> that sums the cubes of integers 
+        from a minimum value up to a maximum value and returns that sum. 
+      </p></statement>
+      <program interactive="activecode"><input>
+  public class SumC
+  {
+    public int sumSquares(int max)
+    { int num = 1;
+      int sum = 0;
+      while (num &lt;=  max)  // While num &lt;= max
+      {
+        sum = sum + num*num; // Add square to sum
+        num = num + 1;       // Add 1 to num
+      } //while
+      return sum;           // Return the sum
+    }
+
+    /** Write sumCubes(min, max) that sums the cubes of integers 
+    from a minimum value up to a maximum value and returns that sum.  */
+
+
+
+    public static void main(String[] args)
+    {
+       SumC s = new SumC(); 
+       int num = 4; 
+       System.out.println( "The sumSquared of " + num + " is "" +  s.sumSquared(num) );
+       System.out.println( "The sumCubed of " + num + " is "" +  s.sumCubed(1,num) );
+       System.out.println( "The sumCubed of 2 to 3 should be 35. Your method returns: " + s.sumCubed(2,3) );
+    }
+  }
+ </input></program>
+ </exercise>
   </subsection>
 </section>

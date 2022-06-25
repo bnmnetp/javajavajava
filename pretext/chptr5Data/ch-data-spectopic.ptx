@@ -1,0 +1,48 @@
+<section>
+  <title>Special Topic: Are We Computers?</title>
+  <introduction>
+    <p>
+      George Boole published his seminal work,
+      <em>An Investigation of the Laws of Thought</em>, in 1854.
+      His achievement was in developing an algebra for logic<mdash/>that is,
+      a purely abstract and symbolic system for representing the laws of logic.
+      Boole's was not the first attempt to explore the relationship between the human mind and an abstract system of computation.
+      Back in 1655, Thomas Hobbes had already claimed that all thought was computation.
+    </p>
+    <p>
+      It is estimated that the human brain contains (<m>10^{12}</m> <m>=</m> <m>10{,}000{,}000{,}000{,}000</m>) <em>neurons</em>,
+      and each neuron contains something like 10,000 <em>dendrites</em>,
+      the fibers that connect one neuron to another.
+      Together, the neurons and dendrites make up a web of enormous complexity.
+      Since the 1840s it has been known that the brain is primarily electrical,
+      and by the 1940s scientists had developed a pretty good model of the electrical interactions among neurons.
+      According to this model,
+      neurons emit short bursts of electricity along their <em>axons</em>,
+      which function like output wires.
+      The bursts leap over the gap separating axons and dendrites,
+      which function like the neurons' input wires.
+    </p>
+    <p>
+      In 1943, just before the first digital computers were developed, Warren McCulloch,
+      a neurophysiologist,
+      and Walter Pitts, a mathematician, published a paper titled,
+      <q>A Logical Calculus of the Ideas Imminent in Nervous Activity.</q>
+      In this paper,
+      they showed that all of the boolean operators<mdash/>AND, OR, NOT, and EXCLUSIVE-OR<mdash/>could be represented by the behavior of small sets of neurons.
+      For example,
+      they showed that three neurons could be connected together in such a way that the third neuron fired if and only if both of the other two neurons fired.
+      This is exactly analogous to the definition of the boolean AND operator.
+    </p>
+    <p>
+      A few years later, when the first computers were built,
+      many scientists and philosophers were struck by the similarity between the logic elements that made up the computer's circuits and the neuronal models that McCulloch and Pitts had developed.
+    </p>
+    <p>
+      The area of neural networks is a branch of artificial intelligence
+      (one of the applied areas of computer science)
+      and is based on this insight by McCulloch and Pitts.
+      Researchers in this exciting and rapidly advancing field develop neural network models of various kinds of human thinking and perception.
+    </p>
+  </introduction>
+</section>
+ 

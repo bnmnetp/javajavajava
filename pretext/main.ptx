@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <pretext xmlns:xi="http://www.w3.org/2001/XInclude" xml:lang="en-US">
   <docinfo>
-<macros>
+    <macros>
 \def\fontCDT{\fontsize{7.5}\selectfont}
 \renewcommand{\thetable}{A.\arabic{table}}
 \def\fontCDTsmall{\fontsize{7.25}\selectfont}
@@ -49,14 +49,8 @@
     \parbox[t]{12.5pc}{
     \protect\vspace{-8pt}\caption{#3 }\label{#4}
     }
-    \protect\parbox[t]{27pc}{
-    \protect\vfill\psfig{file=../#1,scale=#2}
-    }
-  }
-\def\splarge{\fontdimen2\font=1.3\fontdimen2\font}
-\def\spstrict{\fontdimen2\font=0.7\fontdimen2\font}
-\def\spnormalstr{\fontdimen2\font=1.429\fontdimen2\font}
-\def\spnormallar{\fontdimen2\font=0.7693\fontdimen2\font}
+    \protect\parbox[t]{27pc}{ \protect\vfill\psfig{file=../#1,scale=#2}
+    } } \def\splarge{\fontdimen2\font=1.3\fontdimen2\font} \def\spstrict{\fontdimen2\font=0.7\fontdimen2\font} \def\spnormalstr{\fontdimen2\font=1.429\fontdimen2\font} \def\spnormallar{\fontdimen2\font=0.7693\fontdimen2\font}
 \def\TBT#1#2{\small    {
  TABLE\ \thetable}
     #2\hfill\}
@@ -64,15 +58,11 @@
 \def\TBCDT#1{\fontTBCDT#1}
 \def\UNTB{}
 \def\BOXDT#1{
-\vspace{9pt plus7pt minus4pt}\fboxrule=0.5pt
-  \fboxsep=6pt\fbox{\parbox{26pc}{#1}
+\vspace{9pt plus7pt minus4pt}\fboxrule=0.5pt \fboxsep=6pt\fbox{\parbox{26pc}{#1}
   }
 \vspace{12pt plus8pt minus4pt}}
 \def\BOXtwo#1#2{
-\vspace{7pt plus7pt minus4pt}
-  \fboxrule=0.5pt
-  \fboxsep=6pt
-  \psfig{file=../commonart/bx1_dg.eps}
+\vspace{7pt plus7pt minus4pt} \fboxrule=0.5pt \fboxsep=6pt \psfig{file=../commonart/bx1_dg.eps}
 \vspace{-32pt}
   \fbox{\parbox{26pc}{\vspace{-6pt}
   {\rule[-3pt]{10.8pc}{15pt}}
@@ -84,10 +74,7 @@ JAVA\,\,LANGUAGE\,\,RULE}
   }
 \vspace{12pt plus10pt minus4pt}}
 \def\BOXtwoleft#1#2{
-\vspace{7pt plus7pt minus4pt}
-  \fboxrule=0.5pt
-  \fboxsep=6pt
-  \psfig{file=../commonart/bx1_dg.eps}
+\vspace{7pt plus7pt minus4pt} \fboxrule=0.5pt \fboxsep=6pt \psfig{file=../commonart/bx1_dg.eps}
 \vspace{-32pt}
   \fbox{\parbox{26pc}{\vspace{-6pt}
   {\rule[-3pt]{10.8pc}{15pt}}
@@ -104,8 +91,7 @@ JAVA\,\,LANGUAGE\,\,RULE}
   
   \parbox[t]{11.5pc}{
   #1\\
-  {\rule[0pt]{11.5pc}{1pt}}\\
-  \epsfig{file=#2}\\\small#3
+  {\rule[0pt]{11.5pc}{1pt}}\\ \epsfig{file=#2}\\\small#3
   }
   \parbox[t]{26pc}{#4
   }}}
@@ -134,8 +120,8 @@ JAVA\,\,LANGUAGE\,\,RULE}
 \newcommand{\appendixright}[2]{}
 \newcommand{\chaptermark}[1]{}
 \newcommand{\sectionmark}[1]{}
-</macros>
-<latex-image-preamble>
+    </macros>
+    <latex-image-preamble>
 \usepackage{tikz}
 \usepackage{tkz-graph}
 \usepackage{tkz-euclide}
@@ -146,57 +132,66 @@ JAVA\,\,LANGUAGE\,\,RULE}
 \usetikzlibrary{shapes}
 \usetikzlibrary{through,intersections,decorations,shadows,fadings}
 \usepackage{pgfplots}
-</latex-image-preamble>
-<!-- <rename @element="activity" xml:lang="fr-FR">Laboratoire</rename> -->
-<!-- <rename @element="observation" xml:lang="en-EN">Programming Tip</rename> -->
-<document-id edition="1">javajavajava</document-id>
+    </latex-image-preamble>
+    <!-- <rename @element="activity" xml:lang="fr-FR">Laboratoire</rename> -->
+    <!-- <rename @element="observation" xml:lang="en-EN">Programming Tip</rename> -->
+    <document-id edition="1">javajavajava</document-id>
+
+    <!-- Rename Checkpoint for <exercise> to Exercise -->
+    <rename element="inlineexercise">Exercise</rename>
+
+
+    <brandlogo url="." source="jjj-3e-cover.jpg" />
+
   </docinfo>
+
   <book>
     <title>Java, Java, Java</title>
-    <p>Object-Oriented Problem Solving, 2022 Ed. </p>
+    <subtitle>Object-Oriented Problem Solving, 2022E</subtitle>
+
     <frontmatter>
       <titlepage>
-     <p>   Java, Java, Java</p>
-    <p>Object-Oriented Problem Solving, 2022 Ed. </p>
-        <p>
-          <image width="100%" source="java-wikimedia.png"/>
-          </p>
-     
-      <p>
         <author>
-        <personname>Ralph Morelli</personname> 
-        <institution>Trinity College</institution>
-            <email></email>
-        </author>
-        <author><personname> Ralph Walde</personname>
+          <personname>Ralph Morelli</personname>
           <institution>Trinity College</institution>
           <email></email>
         </author>
-       
-      </p>
-        <colophon xml:id="colophon">
-          <copyright>
-              <year>2022</year>
-              
-              <shortlicense>This work is licensed under a Creative Commons Attribution 4.0 International License.
-              </shortlicense>
-          </copyright>
-      </colophon>
-     
-       
+        <author>
+          <personname> Ralph Walde</personname>
+          <institution>Trinity College</institution>
+          <email></email>
+        </author>
       </titlepage>
+
+      <acknowledgement>
+        <p>
+        Beryl Hoffman (Elms College) and Doug Lundin (Arapahoe Community College) assisted in the 2022 port of this book to Runestone, and in editing and 
+        adding interactive elements.</p>
+      </acknowledgement>
+
+      <colophon xml:id="colophon">
+        <copyright>
+          <year>2022</year>
+
+          <shortlicense>This work is licensed under a Creative Commons Attribution 4.0 International License.
+          </shortlicense>
+        </copyright>
+      </colophon>
+
+
+
     </frontmatter>
     <xi:include href="./chptr0Intro/chapter-intro.ptx"/>
     <xi:include href="./chptr1Java/ch_intro2.ptx"/>
     <xi:include href="./chptr2Objects/chapter-objects.ptx"/>
     <xi:include href="./chptr3Methods/chapter-methods.ptx"/>
     <xi:include href="./chptr4io/chapter-io.ptx"/>
-     <!--
-    <xi:include href="./chapter-models.ptx"/>
-    <xi:include href="./chapter-loops.ptx"/>
-    <xi:include href="./chapter-strings.ptx"/>
-    <xi:include href="./chapter-inheritance.ptx"/>
-    <xi:include href="./chapter-arrays.ptx"/>
+    <xi:include href="./chptr5Data/chapter-data.ptx"/>
+    <xi:include href="./chptr6Loops/chapter-loops.ptx"/>
+    <xi:include href="./chptr7Strings/chapter-strings.ptx"/>
+    <xi:include href="./chptr8Inheritance/chapter-inheritance.ptx"/>
+    <xi:include href="./chptr9Arrays/chapter-arrays.ptx"/>
+    <!-- 
     <xi:include href="./chapter-exceptions.ptx"/>
     <xi:include href="./chapter-files.ptx"/>
     <xi:include href="./chapter-recursion.ptx"/>
