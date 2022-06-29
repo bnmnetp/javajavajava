@@ -35,4 +35,6 @@ along with PreTeXt.  If not, see <http://www.gnu.org/licenses/>.
         <knowl exercise-inline="no" example="no" listing="no"/>
     </html>
 
+    <stringparam key="html.css.extra" value="developer.css"/> 
+
 </publication>
