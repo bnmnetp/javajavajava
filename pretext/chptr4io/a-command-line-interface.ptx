@@ -84,10 +84,14 @@
       As the figure shows, <c>InputStreamReader</c> has a constructor that allows it to read an <c>InputStream</c>. Therefore,
       to construct a <c>BufferedReader</c> that will read <c>System.in</c> we use the following statement:
     </p>
- <program language="java"><input>
-BufferedReader input = new BufferedReader
-   (new InputStreamReader (System.in));
- </input></program>
+
+<program language="java">
+    <input>
+    BufferedReader input = new BufferedReader
+    (new InputStreamReader (System.in));
+    </input>
+</program>
+
     <p>
       In this statement we are actually creating two objects.
       We first create an <c>InputStreamReader</c>, giving it a reference to
@@ -102,9 +106,13 @@ BufferedReader input = new BufferedReader
       having created a <c>BufferedReader</c> named
 <c>input</c>, the following code segment will read one line of input and assign it to the <c>String</c> variable named <c>inputString</c>.
     </p>
- <program language="java"><input>
-String inputString = input.readLine();
- </input></program>
+
+<program language="java">
+    <input>
+    String inputString = input.readLine();
+    </input>
+</program>
+
     <p>
       When the program encounters the <c>readLine()</c> expression,  it will wait for the user to hit the Enter key.
       It will then input whatever the user typed,
@@ -136,9 +144,13 @@ String inputString = input.readLine();
       For example, in the following usage,
       the string "55" is converted into the number 55:
     </p>
- <program language="java"><input>
-int m = Integer.parseInt("55");
- </input></program>
+
+<program language="java">
+    <input>
+    int m = Integer.parseInt("55");
+    </input>
+</program>
+
     <p>
       Similarly, the <c>Double</c> class contains the
 <c>parseDouble()</c> method,
@@ -146,26 +158,33 @@ int m = Integer.parseInt("55");
       In this example,
       the number 55.2 is extracted from the string "55.2":
     </p>
- <program language="java"><input>
-double num = Double.parseDouble("55.2");
- </input></program>
+
+<program language="java">
+    <input>
+    double num = Double.parseDouble("55.2");
+    </input>
+</program>
+
     <p>
       If we are writing a program that requires us to input numbers from the keyboard,
       then assuming we have created a <c>BufferedReader</c> object named <c>input</c>, we can use these methods in combination with the <c>readLine()</c> method,
       to input and process numbers.
       For example, this code segment calculates a runner's race pace:
     </p>
- <program language="java"><input>
-String inputString = new String();
-System.out.println("How many total miles did you run? ");
-inputString = input.readLine();   // Input a String}
-double miles = Double.parseDouble(inputString); // Convert
-System.out.println("How many minutes did it take you? ");
-inputString = input.readLine();   // Input another String
-double minutes = Double.parseDouble(inString);  // Convert
-System.out.println("Your average pace was " +
-                   minutes/miles + " minutes per mile");
- </input></program>
+
+<program language="java">
+    <input>
+    String inputString = new String();
+    System.out.println("How many total miles did you run? ");
+    inputString = input.readLine();   // Input a String}
+    double miles = Double.parseDouble(inputString); // Convert
+    System.out.println("How many minutes did it take you? ");
+    inputString = input.readLine();   // Input another String
+    double minutes = Double.parseDouble(inString);  // Convert
+    System.out.println("Your average pace was " + minutes/miles + " minutes per mile");
+    </input>
+</program>
+
     <p>
       Notice how we included prompts in this example so that the user knows what type of input is expected.
       Designing appropriate prompts is an important aspect of designing a good user interface.
@@ -209,10 +228,14 @@ System.out.println("Your average pace was " +
     <p>
       The following code segment illustrates how we will use a <c>KeyboardReader</c> object to input an integer:
     </p>
- <program language="java"><input>
-KeyboardReader cmdline = new KeyboardReader();
-int m = cmdline.getKeyboardInteger();
- </input></program>
+
+<program language="java">
+    <input>
+    KeyboardReader cmdline = new KeyboardReader();
+    int m = cmdline.getKeyboardInteger();
+    </input>
+</program>
+
     <p>
       All we need to do is create an instance of the <c>KeyboardReader</c> and ask it to get an integer for us.
       This greatly simplifies the work we would have to do when we want to perform keyboard input.
@@ -253,17 +276,19 @@ int m = cmdline.getKeyboardInteger();
       <xref ref="fig-keybrdrdrclass">Figure</xref> gives the full implementation
       (for now)
       of the <c>KeyboardReader</c> class.
-      Lets go through it line by
+     
     </p>
-    <figure xml:id="fig-keybrdrdrclass">
+    <listing xml:id="fig-keybrdrdrclass">
       <caption>Definition of the <c>KeyboardReader</c> class.</caption>
- <program language="java"><input>
-import java.io.*;
-public class KeyboardReader
-{   private BufferedReader reader;
-    public KeyboardReader() {
-        reader = new BufferedReader
-           (new InputStreamReader(System.in));
+
+<program language="java">
+    <input>
+    import java.io.*;
+    public class KeyboardReader
+    {   private BufferedReader reader;
+        public KeyboardReader() {
+            reader = new BufferedReader
+            (new InputStreamReader(System.in));
     }
     public String getKeyboardInput()
     {   return readKeyboard();
@@ -288,21 +313,27 @@ public class KeyboardReader
         {  e.printStackTrace();
         }
         return line;
-    }}
- </input></program>
-    </figure>
+    }
+  }
+    </input>
+</program>
+
+    </listing>
     <p>
-      line.
+      Lets go through it line by line.
       The first thing to notice is the use of the <c>import</c> statement.
       Recall that importing a Java package enables us to refer to elements in the package by their short names (<c>BufferedReader</c>), rather than by their fully qualified names (<c>java.io.BufferedReader</c>).
     </p>
     <p>
       Next notice how we create a <c>BufferedReader</c> object in the <c>KeyboardReader()</c> constructor:
     </p>
- <program language="java"><input>
-reader = new BufferedReader
-    (new InputStreamReader (System.in));
- </input></program>
+
+<program language="java">
+    <input>
+    reader = new BufferedReader (new InputStreamReader (System.in));
+    </input>
+</program>
+
     <p>
       The resulting <c>reader</c> object will persist as long as our <c>KeyboardReader</c> object exists and can be used for all subsequent input operations.
     </p>
@@ -352,10 +383,14 @@ reader = new BufferedReader
       Let's design a program that prompts the user for his or her name and then says hello.
       Thus, the program's I/O should look like this:
     </p>
- <program language="java"><input>
+
+<program language="java">
+    <input>
 Hi, please input your name here > Kim
   Hi Kim, nice to meet you.
- </input></program>
+    </input>
+</program>
+
     <p>
       In the design we use there will be two primary objects involved.
       One will serve as the user interface.
@@ -397,9 +432,11 @@ Hi, please input your name here > Kim
       The full implementation of the <c>GreeterApp</c> class is shown in <xref ref="fig-greeterapp">Figure</xref>.
       It begins by declaring an instance
     </p>
-    <figure xml:id="fig-greeterapp">
+    <listing xml:id="fig-greeterapp">
       <caption>Definition of the <c>GreeterApp</c> class.</caption>
- <program language="java"><input>
+
+<program language="java">
+    <input>
 public class GreeterApp
 {   private KeyboardReader reader;
     public GreeterApp()
@@ -417,9 +454,12 @@ public class GreeterApp
     public static void main(String args[])
     {   GreeterApp app = new GreeterApp();
         app.run();
-    }} // GreaterApp
- </input></program>
-    </figure>
+    }
+  } // GreaterApp
+    </input>
+</program>
+
+    </listing>
     <p>
       variable for the <c>KeyboardReader</c>, which is instantiated in the constructor method.
       This gives <c>GreeterApp</c> a way to refer directly to the user interface whenever it needs keyboard input.
@@ -460,7 +500,7 @@ public class GreeterApp
         </li>
       </ul>
     </p>
-      </subsection> 
+      </subsection>
       <subsection>
       <title>Self-Study Exercises</title>
       <ol>
@@ -472,9 +512,13 @@ public class GreeterApp
             we can generate random numbers between any two values.
             For example,
             the following statement assigns a random integer between 1 and 100 to the variable:
- <program language="java"><input>
-secretNumber = 1 + (int)(Math.random() * 100);
- </input></program>Given this statement,
+
+<program language="java">
+    <input>
+    secretNumber = 1 + (int)(Math.random() * 100);
+    </input>
+</program>
+            Given this statement,
             design and implement an application that will play the following guessing game with the user.
             The computer generates a random number between 1 and 100 and then lets the user guess the number,
             telling the user when the guess is too high or too low.
