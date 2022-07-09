@@ -1,4 +1,4 @@
-<section>
+<section xml:id="ch5-numformat">
   <title>From the Java Library
 <c>java.text.NumberFormat</c></title>
 <introduction>
@@ -62,12 +62,10 @@
     </p>
   </principle>
 </introduction>
-<subsection xml-id="ss-5-8-1">
+<exercises xml-id="ss-5-8-1">
     <title>Self-Study Exercise</title>
-    <p>
-    <ol>
-      <li xml:id="ex-bankcd">
-        <p>
+    
+      <p>
           A Certificate of Deposit (CD) is an investment instrument 
           that accumulates interest at a given rate for an initial principal 
           over a fixed number of years.
@@ -103,6 +101,10 @@
           <caption>The <c>BankCD</c> class.</caption>
          <image width="40%" source="chptr05/bankcd.png"/>
         </figure>
+      
+        <exercise label="bankCDex" xml:id="ex-bankcd">
+          <title>BankCD</title>
+          <statement>
         <p> 
           Implement a <c>BankCD</c> class that calculates the maturity value of a CD. 
           <xref ref="fig-bankcd">Figure</xref> gives the design of the class.
@@ -110,20 +112,53 @@
           and years.
           Its constructor method sets the initial values of 
           these variables when a <c>BankCD</c> is instantiated.
-          Its two public methods calculate the maturity value 
+          Its two public methods <c>calcYearly()</c> and <c>calcMonthly()</c> calculate and return the maturity value 
           using yearly and daily compounding interest,
           respectively.
           Use the <c>Math.pow()</c> method to calculate maturity values.
           For example,
           the following expression calculates maturity value with annual compounding:
-        </p>
+      <c>principal * Math.pow(1 + rate, years)</c>
+        </p></statement>
+        <program language="java" interactive="activecode"><input>
+         public class BankCD
+         {
+
+
+          public static void main(String argv[])
+          {
+             BankCD cd = new BankCD(1000, 0.05, 10);
+             System.out.println("Yearly Interest: " + cd.calcYearly());
+             System.out.println("Monthly Interest: " + cd.calcMonthly());
+          }
+         }
+        </input>   </program>
+        <solution>
           <program language="java"><input>
-           principal * Math.pow(1 + rate, years)
+            public class BankCD 
+            { private double principal;   // The CD's initial principal
+              private double rate;        // CD's interest rate
+              private double years;       // Number of years to maturity
+              public BankCD(double p, double r, double y) 
+              {   principal = p;
+                rate = r;
+                years = y;
+              } // BandCD()
+              public double calcYearly() 
+              {   return principal * Math.pow(1 + rate, years);
+              } // calcYearly()
+              public double calcDaily() 
+              {   return principal * Math.pow(1 + rate/365, years*365);
+              } // calcDaily()
+            } // BankCD
           </input></program>
-      </li>
-      <li>
-        <p>
-          Design a command-line user interface to the <c>BankCD</c> 
+        </solution>
+        </exercise>
+      
+        <exercise>
+          <title>BankCD UI</title>
+          <statement><p> Using a development environment that allows user input, 
+            design a command-line user interface to the <c>BankCD</c> 
           class that lets the user input principal,
           interest rate, and years,
           and reports the CD's maturity value with both yearly and daily compounding.
@@ -131,21 +166,53 @@
           and dollar figures in an appropriate format.
           The program's output should look something like the following (user's inputs follow
           the '>' prompt):
-        </p>
-
         <pre>
         ************************ OUTPUT ********************
         Compare daily and annual compounding for a Bank CD.
         Input CD initial principal, e.g.  1000.55 > 2500
         Input CD interest rate, e.g.  6.5 > 7.8
         Input the number of years to maturity, e.g., 10.5 > 5 
-        For Principal = <m>2,500.00 Rate= 7.8% Years= 5.0
-        The maturity value compounded yearly is</m>3,639.43
+        For Principal = 2,500.00 Rate= 7.8% Years= 5.0
+        The maturity value compounded yearly is 3,639.43
         The maturity value compounded daily is: $3,692.30
         ************************ OUTPUT ********************
-        </pre>
-      </li>
-    </ol>
-  </p>
-</subsection>
+      </pre>
+  </p></statement>
+  <solution><p>
+    <program language="java"><input>
+       public class TestBankCD 
+       { 
+         private KeyboardReader reader = new KeyboardReader();   
+         private NumberFormat dollars = NumberFormat.getCurrencyInstance(); 
+         private NumberFormat percent = NumberFormat.getPercentInstance();
+         private BankCD cd;
+         public void run()
+         { reader.display("Compares daily and annual compounding for a CD.\n");
+           reader.prompt("  Input the CD's initial principal, e.g.  1000.55 > ");
+           double principal = reader.getKeyboardDouble();
+           reader.prompt("  Input the CD's interest rate, e.g.  6.5 > ");
+           double rate = reader.getKeyboardDouble() / 100.0;
+           reader.prompt("  Input the number of years to maturity, e.g., 10.5 > ");
+           double years = reader.getKeyboardDouble();
+           cd = new BankCD(principal, rate, years);
+           percent.setMaximumFractionDigits(2);
+           System.out.println("For Principal = " + dollars.format(principal) +
+                              " Rate= " + percent.format(rate) +
+                              " Years= " + years);
+           double cdAnnual = cd.calcYearly();  // Compounded yearly
+           double cdDaily =  cd.calcDaily();   // Compounded annually
+           System.out.println(" The maturity value compounded yearly is " +
+                          dollars.format(cdAnnual));
+           System.out.println(" The maturity value compounded daily is: " +
+                          dollars.format(cdDaily));
+         } // run()
+         public static void main( String args[] ) 
+         { TestBankCD cd = new TestBankCD();
+           cd.run();
+         } // main()
+       }// TestBankCD
+    </input></program>
+  </p></solution>
+</exercise>
+</exercises>
 </section>

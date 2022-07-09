@@ -1,4 +1,4 @@
-<section xml:id="flowof-control-control-structures">
+<section xml:id="flow-of-control-structures">
   <title>Flow of Control: Control Structures</title>
   <introduction>
     <p>
@@ -101,6 +101,7 @@ if (true) "Hello";    // "Hello" is  not a statement
         What does it print out? Trace through the code with Show CodeLens.</p></statement>
       <program language="java" interactive="activecode"><input>
       public class RainMonitor
+      {
          public static void main(String[] args)
          {
            boolean isRaining = true;
@@ -122,7 +123,9 @@ if (true) "Hello";    // "Hello" is  not a statement
           {
               String output = getMethodOutput("main");
               String expect = "Drive Carefully\n";
-              boolean passed = getResults(expect, output, "Expected output from main after changing isRaining to false", true);
+              boolean passed = output.equals(expect);
+              getResults(expect, output, 
+              "Expected output from main after changing isRaining to false", passed);
               assertTrue(passed);
           }
       }
@@ -391,8 +394,8 @@ else
      public static void main(String[] args)
      {
          // Get a random number from 0 up to 3 (but not including 3)
-         int number = (int) (Math.random() * 3);
-         System.out.println("The number is " + number);
+         int num = (int) (Math.random() * 3);
+         System.out.println("The number is " + num);
   
          if (num == 0)
             System.out.println("Zero");
@@ -441,11 +444,12 @@ public String takeSticks(int num)
       a programmer could choose to write the code either way.
     </p>
    
-      </subsection><subsection><title>Self-Study Exercises</title>
-        <p>
-      <ol>
-        <li>
-          <p>
+   <exercises><title>Self-Study Exercises</title>
+       
+    <exercise label="ifFlowChartEx">
+      <title>Flow Chart</title>
+      <statement>
+    <p>
             Consider the following method with
 <c>boolean</c> parameter.
  <program language="java"><input>
@@ -456,7 +460,8 @@ public String getStatus(boolean isDone)
    else
         return "Not Done";
  }
- </input></program>Draw a flowchart for the if-else version of the <c>getStatus()</c> method,
+ </input></program>
+ Draw a flowchart for the if-else version of the <c>getStatus()</c> method,
             using the figures in this section as a guide.
             The if-else structure should be drawn exactly as shown in <xref ref="fig-ifelsechart">Figure</xref>.
             It should have a single entry point that leads directly to the top of a diamond-shaped box that contains a boolean condition.
@@ -468,11 +473,20 @@ public String getStatus(boolean isDone)
             The left and right branches should be connected by a circular symbol that is aligned directly under the diamond box whose conditions it connects.
             There should be a single exit arrow pointing directly down.
           </p>
-        </li>
-        </ol>
-        </p>
+        </statement>
+          <solution>
+            <p>
+      
+              Flowchart of the if-else version of the <c>getStatus()</c> method:
+              <image width="50%" source="chptr03/isdone.png"/>
+        
+                      </p>
+          </solution>
+          </exercise>
+        
       
         <exercise label="ifDebugEx">
+          <title>If Debug</title>
           <statement><p> Identify the errors in the following statements and fix them in the activecode below.
           </p></statement>
           <program language="java" interactive="activecode"><input>
@@ -494,10 +508,23 @@ public String getStatus(boolean isDone)
                }
               }
  </input></program>
+ <solution>
+  <program language="java"><input>
+    if (isHeavy == true)
+         System.out.println("Heavy") ;
+    else ;  // Error (remove this semicolon)
+         System.out.println("Light");
+    if (isLong == true)
+         System.out.println("Long")
+    else   // Error (end line above with semicolon)
+         System.out.println("Short");
+     </input></program>
+ </solution>
   </exercise>        
   
         
           <exercise label="getPlayerNameEx">
+            <title>getPlayerName()</title>
             <statement><p>Write a method named
   <c>getPlayerName()</c> that returns a <c>String</c>. It should return
               <q>Ann</q>,              <q>Bill</q>,
@@ -536,8 +563,20 @@ public String getStatus(boolean isDone)
                  }
                 }
    </input></program>
+   <solution> <program language="java"><input>
+    public String getPlayerName()
+    {    if (player == 1)
+             return "Ann";
+         else if (player == 2)
+             return "Bill";
+         else if (player == 3)
+             return "Cal";
+         else
+             return "Error";
+    }
+     </input></program></solution>
         </exercise>
-  
+  </exercises>
   </subsection>
 
   <subsection xml:id="while-loops">
@@ -581,7 +620,8 @@ public String getStatus(boolean isDone)
     </p>
     <activity label="squareOfInts">
       <statement><p>Run the following code to see the sum of squares method in action. 
-        Click on the CodeLens button to trace through it. Change the main method to change num and run again.
+        Click on the CodeLens button to trace through it. 
+        Change the main method to change num and run again.
       </p></statement>
       <program language="java" interactive="activecode"><input>
   public class Sum
@@ -600,7 +640,7 @@ public String getStatus(boolean isDone)
     {
        Sum s = new Sum(); 
        int num = 4; 
-       System.out.println( "The sumSquared of " + num + " is " +  s.sumSquared(num) );
+       System.out.println( "The sumSquares of " + num + " is " +  s.sumSquares(num) );
     }
   }
  </input></program>
@@ -694,11 +734,11 @@ while (loop entry condition) { // Bound test
       and the loop body contains updater statements.
       The semantics of the while structure are shown in <xref ref="fig-whileflow">Figure</xref>.
     </p>
-  </subsection>
   
-    <subsection><title>While Loop Self-Study Exercises</title>
+  
+<exercises><title>While Loop Self-Study Exercises</title>
      
-          <p> Modify the definition of the
+ <p> Modify the definition of the
 <c>sumSquares()</c> method to define a method named <c>sumCubes()</c> that sums the cubes of integers 
 from a minimum value up to a maximum value and returns that sum. 
  <c>sumCubes()</c> should have two parameters that will store the minimum and maximum values.
@@ -707,7 +747,9 @@ Thus the method call <c>sumCubes(2,3)</c> should return <m>35</m> since <m>2*2*2
     </p>
 
     <exercise label="sumCubes">
-      <statement><p>Using the <c>sumSquares</c> method below as a guide, define a method named <c>sumCubes(min, max)</c> that sums the cubes of integers 
+      <title>sumCubes()</title>
+      <statement><p>Using the <c>sumSquares</c> method below as a guide, define a method named
+        <c>sumCubes(min, max)</c> that sums the cubes of integers 
         from a minimum value up to a maximum value and returns that sum. 
       </p></statement>
       <program language="java" interactive="activecode"><input>
@@ -733,12 +775,29 @@ Thus the method call <c>sumCubes(2,3)</c> should return <m>35</m> since <m>2*2*2
     {
        SumC s = new SumC(); 
        int num = 4; 
-       System.out.println( "The sumSquared of " + num + " is " +  s.sumSquared(num) );
-       System.out.println( "The sumCubed of " + num + " is " +  s.sumCubed(1,num) );
-       System.out.println( "The sumCubed of 2 to 3 should be 35. Your method returns: " + s.sumCubed(2,3) );
+       System.out.println( "The sumSquares of " + num + " is " +  s.sumSquares(num) );
+       System.out.println( "The sumCubes of " + num + " is " +  s.sumCubes(1,num) );
+       System.out.println( "The sumCubes of 2 to 3 should be 35. Your method returns: " + s.sumCubes(2,3) );
     }
   }
  </input></program>
+ <solution>
+  <program language="java"><input>
+    public int sumCubes(int min, int max)
+    {
+        int num = min;
+        int sum = 0;
+        while (num &lt;=  max) 
+        { // While num &lt;= max
+            sum = sum + num*num*num; // Add cube of num to sum
+            num = num + 1;       // Add 1 to num
+        } //while
+        return sum;           // Return the sum
+    }
+     </input></program>
+          
+ </solution>
 </exercise>
+</exercises>
   </subsection>
 </section>

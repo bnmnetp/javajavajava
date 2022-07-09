@@ -205,7 +205,34 @@
       result will still be an <c>int</c>. Therefore,
       it cannot be assigned to a <c>char</c> without an explicit cast.
     </p>
-  </subsection>
+ <!-- </subsection> -->
+  <exercises><title>Self-Study Exercises</title>
+    
+    <exercise label="valid-cast">
+      <statement><p>
+      Suppose that <c>m</c> and <c>n</c> are integer variables of type
+      <c>int</c> and that <c>ch1</c> and <c>ch2</c> are character variables of type
+      <c>char</c>.  Determine in each of the  cases that follow whether the
+     assignment statements are valid. If not, modify the statement to make
+     it valid.
+     <program language="java"><input>
+     m = n;        
+     m = ch1;       
+     ch2 = n;       
+     ch1 = ch2;     
+     ch1 = m - n; 
+    </input></program>
+    </p></statement>
+  <solution><p><ul>
+    <li>valid</li>
+    <li>valid</li>
+    <li> ch2 = (char)n;</li>
+ <li> valid</li>
+ <li> ch1 = (char)(m-n);</li>
+  </ul></p></solution>
+</exercise>
+</exercises>
+</subsection>
   <subsection>
     <title>Lexical Ordering</title>
     <p>
