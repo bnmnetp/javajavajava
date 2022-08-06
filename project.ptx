@@ -18,7 +18,7 @@
       <source>pretext/main.ptx</source>
       <publication>pretext/publication-rs-academy.ptx</publication>
       <output-dir>published/javajavajava</output-dir>
-      <stringparam key="html.css.extra" value="developer.css"/>       
+      <stringparam key="html.css.extra" value="external/custom-css.css"/>       
     </target>
     <target name="latex">
       <format>latex</format>
