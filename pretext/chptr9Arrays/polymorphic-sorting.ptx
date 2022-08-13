@@ -219,7 +219,7 @@ Arrays.sort(fArr);
       Obviously, learning how to use Java's class and method library,
       saves real-word programmers lots of effort. Try it below!
     </p>
-    <activity><statement>Run the code below a couple times to populate the array with random numbers and see the result of the <c>Arrays.sort()</c> method.</statement>
+    <activity label="rndArr"><statement>Run the code below a couple times to populate the array with random numbers and see the result of the <c>Arrays.sort()</c> method.</statement>
   <program language="java" interactive="activecode"><input>
 import java.util.*;
 public class TestSort {  
@@ -239,7 +239,7 @@ public class TestSort {
 
 <exercises>
     <title>Self-Study Exercises</title>
-    <exercise>
+    <exercise label="poly-sort">
     <title>Polymorphic Sort</title>
     <statement>
       <p>This exercise has three parts:</p>
